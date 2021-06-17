@@ -14,7 +14,7 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
             m_Label = new Label
             {
                 BackColor = Color.Transparent,
-                Font = new Font("Yahfie", 24),
+                Font = new Font("Yahfie", 20),
                 ForeColor = Color.White,
                 AutoSize = true,
             };

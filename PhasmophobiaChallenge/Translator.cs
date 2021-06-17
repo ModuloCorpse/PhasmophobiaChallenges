@@ -51,6 +51,8 @@ namespace PhasmophobiaChallenge
         Demon,
         Yurei,
         Oni,
+        Yokai,
+        Hantu,
         //Ghost evidences
         Freezing,
         GhostWriting,
@@ -172,7 +174,7 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.StoryMode, "Mode Histoire");
 
                 //Other
-                local.AddTranslation(EString.AppTitle, "Compagnon Pasmophobia");
+                local.AddTranslation(EString.AppTitle, "Compagnon Phasmophobia");
                 local.AddTranslation(EString.Randomize, "Aléatoire");
                 local.AddTranslation(EString.Reset, "Réinitialiser");
                 local.AddTranslation(EString.OutOfItem, "Plus d'objets");
@@ -205,9 +207,11 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.Mare, "Cauchemar");
                 local.AddTranslation(EString.Revenant, "Revenant");
                 local.AddTranslation(EString.Shade, "Ombre");
-                local.AddTranslation(EString.Demon, "Démon");
+                local.AddTranslation(EString.Demon, "Demon");
                 local.AddTranslation(EString.Yurei, "Yurei");
                 local.AddTranslation(EString.Oni, "Oni");
+                local.AddTranslation(EString.Yokai, "Yokai");
+                local.AddTranslation(EString.Hantu, "Hantu");
 
                 //Ghost evidences
                 local.AddTranslation(EString.EMF5, "EMF 5");
@@ -294,7 +298,7 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.StoryMode, "Story Mode");
 
                 //Other
-                local.AddTranslation(EString.AppTitle, "Pasmophobia Companion");
+                local.AddTranslation(EString.AppTitle, "Phasmophobia Companion");
                 local.AddTranslation(EString.Randomize, "Randomize");
                 local.AddTranslation(EString.Reset, "Reset");
                 local.AddTranslation(EString.OutOfItem, "Out of items");
@@ -330,6 +334,8 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.Demon, "Demon");
                 local.AddTranslation(EString.Yurei, "Yurei");
                 local.AddTranslation(EString.Oni, "Oni");
+                local.AddTranslation(EString.Yokai, "Yokai");
+                local.AddTranslation(EString.Hantu, "Hantu");
 
                 //Ghost evidences
                 local.AddTranslation(EString.EMF5, "EMF 5");

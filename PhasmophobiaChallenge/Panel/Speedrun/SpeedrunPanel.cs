@@ -35,11 +35,13 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
             RegisterGhost(EString.Demon, Evidence.SpiritBox, Evidence.Freezing, Evidence.GhostWriting);
             RegisterGhost(EString.Yurei, Evidence.GhostOrb, Evidence.Freezing, Evidence.GhostWriting);
             RegisterGhost(EString.Oni, Evidence.SpiritBox, Evidence.EMF5, Evidence.GhostWriting);
+            RegisterGhost(EString.Yokai, Evidence.SpiritBox, Evidence.GhostWriting, Evidence.GhostOrb);
+            RegisterGhost(EString.Hantu, Evidence.Fingerprints, Evidence.GhostWriting, Evidence.GhostOrb);
             int ghostY = 500;
             foreach (Ghost ghost in m_Ghosts)
             {
                 ghost.GetLabel().Location = new Point(25, ghostY);
-                ghostY -= 45;
+                ghostY -= 37;
             }
             UpdateEvidences();
         }
