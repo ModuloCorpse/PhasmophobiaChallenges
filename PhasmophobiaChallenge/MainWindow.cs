@@ -39,11 +39,11 @@ namespace PhasmophobiaChallenge
             RegisterPanel(new RandomStuffPanel(this));
             RegisterPanel(new SpeedrunPanel(this));
             //RegisterPanel(new DiscordPanel(this));
-            RegisterPanel(new DummyPanel(this, EPanelType.Dummy1, EString.Dummy));
-            RegisterPanel(new DummyPanel(this, EPanelType.Dummy2, EString.Dummy));
-            RegisterPanel(new DummyPanel(this, EPanelType.Dummy3, EString.Dummy));
-            RegisterPanel(new DummyPanel(this, EPanelType.Dummy4, EString.Dummy));
-            RegisterPanel(new DummyPanel(this, EPanelType.Dummy5, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy1, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy2, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy3, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy4, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy5, EString.Dummy));
         }
 
         private void RegisterPanel(APhasmophobiaCompanionPanel panel)

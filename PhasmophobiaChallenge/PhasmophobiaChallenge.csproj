@@ -198,11 +198,6 @@
       <DependentUpon>RandomStuffPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageButton.cs" />
-    <Compile Include="Properties\Discord.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Discord.settings</DependentUpon>
-    </Compile>
     <Compile Include="Settings\APropertyControl.cs" />
     <Compile Include="Settings\PropertiesControlFactory.cs" />
     <Compile Include="Settings\PropertiesControls\PrivatePropertyControlBuilder.cs" />
@@ -316,10 +311,6 @@
     <None Include="Resources\Ridgeview Road House blur.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Discord.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Discord.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Resources\Tanglewood Street House blur.png" />
   </ItemGroup>
   <ItemGroup>
