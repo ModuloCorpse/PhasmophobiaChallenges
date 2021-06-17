@@ -42,7 +42,7 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
             this.RandomizeButton.BackColor = System.Drawing.Color.Transparent;
             this.RandomizeButton.FlatAppearance.BorderSize = 0;
             this.RandomizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RandomizeButton.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RandomizeButton.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RandomizeButton.ForeColor = System.Drawing.Color.White;
             this.RandomizeButton.Location = new System.Drawing.Point(3, 478);
             this.RandomizeButton.Name = "RandomizeButton";
@@ -59,7 +59,7 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
             this.ResetButton.BackColor = System.Drawing.Color.Transparent;
             this.ResetButton.FlatAppearance.BorderSize = 0;
             this.ResetButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetButton.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetButton.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetButton.ForeColor = System.Drawing.Color.White;
             this.ResetButton.Location = new System.Drawing.Point(557, 478);
             this.ResetButton.Name = "ResetButton";

@@ -18,13 +18,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         {
             InitializeComponent();
 
-            foreach (EItemType itemType in Enum.GetValues(typeof(EItemType)))
-            {
-                InventoryItemUI item = new InventoryItemUI(this, itemType);
-                FlowLayoutInventoryPanel.Controls.Add(item);
-                m_Inventory.Add(item);
-            }
-
             DataFragment data = GetData();
             m_Profiles = data.GetArray<StoryModeData>("profiles");
             if (data.Find("lastProfile"))
@@ -35,6 +28,16 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             BackButton.TextChanged += new EventHandler(OnButtonTextChanged);
             NewProfile.TextChanged += new EventHandler(OnButtonTextChanged);
             Profile.TextChanged += new EventHandler(OnProfileTextChanged);
+        }
+
+        public override void OnInitialize()
+        {
+            foreach (EItemType itemType in Enum.GetValues(typeof(EItemType)))
+            {
+                InventoryItemUI item = new InventoryItemUI(this, itemType);
+                FlowLayoutInventoryPanel.Controls.Add(item);
+                m_Inventory.Add(item);
+            }
         }
 
         public override void OnOpen()
@@ -109,11 +112,11 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 
         private void AddTrait(string str)
         {
-            Font font = new Font("Yahfie", DefaultFontSize, FontStyle.Bold);
+            Font font = new Font(GetFontFamily(), DefaultFontSize, FontStyle.Bold);
             SizeF stringSize = TextRenderer.MeasureText(str, font);
             float newFontSize = DefaultFontSize * Math.Min(DefaultLabelHeight / stringSize.Height, (DefaultLabelWidth - 10) / stringSize.Width);
             if (newFontSize < DefaultFontSize)
-                font = new Font("Yahfie", newFontSize, FontStyle.Bold);
+                font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
             FlowLayoutTraitPanel.Controls.Add(new Label()
             {
                 Size = new Size(DefaultLabelWidth, DefaultLabelHeight),
@@ -192,9 +195,9 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
                 SizeF stringSize = TextRenderer.MeasureText(button.Text, button.Font);
                 float newFontSize = button.Font.Size * Math.Min(button.Size.Height / stringSize.Height, (button.Size.Width - 12) / stringSize.Width);
                 if (newFontSize < 28)
-                    button.Font = new Font("Yahfie", newFontSize, FontStyle.Bold);
+                    button.Font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
                 else
-                    button.Font = new Font("Yahfie", 28, FontStyle.Bold);
+                    button.Font = new Font(GetFontFamily(), 28, FontStyle.Bold);
             }
         }
 
@@ -205,9 +208,9 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
                 SizeF stringSize = TextRenderer.MeasureText(label.Text, label.Font);
                 float newFontSize = label.Font.Size * Math.Min(label.Size.Height / stringSize.Height, (label.Size.Width - 12) / stringSize.Width);
                 if (newFontSize < 28)
-                    label.Font = new Font("Yahfie", newFontSize, FontStyle.Bold);
+                    label.Font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
                 else
-                    label.Font = new Font("Yahfie", 28, FontStyle.Bold);
+                    label.Font = new Font(GetFontFamily(), 28, FontStyle.Bold);
             }
         }
 

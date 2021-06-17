@@ -267,6 +267,7 @@
       <DependentUpon>TitleScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Resources\yahfie.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

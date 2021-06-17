@@ -48,7 +48,7 @@ namespace PhasmophobiaChallenge.Panel
             this.PanelButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelButton1.FlatAppearance.BorderSize = 0;
             this.PanelButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PanelButton1.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelButton1.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.PanelButton1.Location = new System.Drawing.Point(166, 61);
             this.PanelButton1.Name = "PanelButton1";
@@ -64,7 +64,7 @@ namespace PhasmophobiaChallenge.Panel
             this.PanelButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelButton2.FlatAppearance.BorderSize = 0;
             this.PanelButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PanelButton2.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelButton2.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.PanelButton2.Location = new System.Drawing.Point(166, 141);
             this.PanelButton2.Name = "PanelButton2";
@@ -80,7 +80,7 @@ namespace PhasmophobiaChallenge.Panel
             this.PanelButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelButton3.FlatAppearance.BorderSize = 0;
             this.PanelButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PanelButton3.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelButton3.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.PanelButton3.Location = new System.Drawing.Point(166, 221);
             this.PanelButton3.Name = "PanelButton3";
@@ -96,7 +96,7 @@ namespace PhasmophobiaChallenge.Panel
             this.PanelButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelButton4.FlatAppearance.BorderSize = 0;
             this.PanelButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PanelButton4.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelButton4.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.PanelButton4.Location = new System.Drawing.Point(166, 301);
             this.PanelButton4.Name = "PanelButton4";
@@ -112,7 +112,7 @@ namespace PhasmophobiaChallenge.Panel
             this.PanelButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PanelButton5.FlatAppearance.BorderSize = 0;
             this.PanelButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PanelButton5.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelButton5.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.PanelButton5.Location = new System.Drawing.Point(166, 381);
             this.PanelButton5.Name = "PanelButton5";
@@ -158,7 +158,7 @@ namespace PhasmophobiaChallenge.Panel
             this.Options.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Options.FlatAppearance.BorderSize = 0;
             this.Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Options.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Options.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.Options.Location = new System.Drawing.Point(533, 297);
             this.Options.Name = "Options";
@@ -171,7 +171,7 @@ namespace PhasmophobiaChallenge.Panel
             // VersionLabel
             // 
             this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
-            this.VersionLabel.Font = new System.Drawing.Font("Yahfie", 25F, System.Drawing.FontStyle.Bold);
+            this.VersionLabel.Font = new System.Drawing.Font(GetFontFamily(), 25F, System.Drawing.FontStyle.Bold);
             this.VersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.VersionLabel.Location = new System.Drawing.Point(636, 434);
             this.VersionLabel.Name = "VersionLabel";
@@ -187,7 +187,7 @@ namespace PhasmophobiaChallenge.Panel
             this.Exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Exit.FlatAppearance.BorderSize = 0;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.Exit.Location = new System.Drawing.Point(533, 363);
             this.Exit.Name = "Exit";

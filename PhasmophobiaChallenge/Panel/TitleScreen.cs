@@ -118,9 +118,9 @@ namespace PhasmophobiaChallenge.Panel
                 SizeF stringSize = TextRenderer.MeasureText(button.Text, button.Font);
                 float newFontSize = button.Font.Size * Math.Min(button.Size.Height / stringSize.Height, (button.Size.Width - 12) / stringSize.Width);
                 if (newFontSize < 36)
-                    button.Font = new Font("Yahfie", newFontSize, FontStyle.Bold);
+                    button.Font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
                 else
-                    button.Font = new Font("Yahfie", 36, FontStyle.Bold);
+                    button.Font = new Font(GetFontFamily(), 36, FontStyle.Bold);
             }
         }
 

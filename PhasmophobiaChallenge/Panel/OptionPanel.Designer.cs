@@ -70,7 +70,7 @@ namespace PhasmophobiaChallenge.Panel
             // Local
             // 
             this.Local.BackColor = System.Drawing.Color.Transparent;
-            this.Local.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold);
+            this.Local.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold);
             this.Local.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.Local.Image = global::PhasmophobiaChallenge.Properties.Resources.main_menu_panel_button_background;
             this.Local.Location = new System.Drawing.Point(355, 83);
@@ -98,7 +98,7 @@ namespace PhasmophobiaChallenge.Panel
             this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackButton.FlatAppearance.BorderSize = 0;
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackButton.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackButton.Font = new System.Drawing.Font(GetFontFamily(), 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.BackButton.Location = new System.Drawing.Point(345, 140);
             this.BackButton.Name = "BackButton";

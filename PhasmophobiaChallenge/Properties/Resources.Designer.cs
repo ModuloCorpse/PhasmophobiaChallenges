@@ -419,5 +419,15 @@ namespace PhasmophobiaChallenge.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] yahfie {
+            get {
+                object obj = ResourceManager.GetObject("yahfie", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
