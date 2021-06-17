@@ -26,7 +26,7 @@ namespace PhasmophobiaChallenge.Panel.Discord
         private DiscordGuild m_Guild = null;
         private DiscordClient m_DiscordClient = null;
 
-        public DiscordPanel(MainWindow mainWindow): base(mainWindow, EPanelType.DiscordChallenges, EString.Discord)
+        public DiscordPanel(MainWindow mainWindow): base(mainWindow, EPanelType.Invalid/*EPanelType.DiscordChallenges*/, EString.Discord)
         {
             InitializeComponent();
         }

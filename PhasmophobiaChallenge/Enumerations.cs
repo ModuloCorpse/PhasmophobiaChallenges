@@ -7,12 +7,12 @@
         StoryMode,
         RandomStuff,
         Speedrun,
-        DiscordChallenges,
-        Dummy1,
-        Dummy2,
-        Dummy3,
-        Dummy4,
-        Dummy5,
+        //DiscordChallenges,
+        //Dummy1,
+        //Dummy2,
+        //Dummy3,
+        //Dummy4,
+        //Dummy5,
         Count,
         Invalid
     }

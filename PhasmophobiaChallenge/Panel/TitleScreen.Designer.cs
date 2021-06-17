@@ -37,6 +37,8 @@ namespace PhasmophobiaChallenge.Panel
             this.Previous = new System.Windows.Forms.Button();
             this.Next = new System.Windows.Forms.Button();
             this.Options = new System.Windows.Forms.Button();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.Exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PanelButton1
@@ -158,7 +160,7 @@ namespace PhasmophobiaChallenge.Panel
             this.Options.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Options.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Options.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
-            this.Options.Location = new System.Drawing.Point(529, 345);
+            this.Options.Location = new System.Drawing.Point(533, 297);
             this.Options.Name = "Options";
             this.Options.Size = new System.Drawing.Size(262, 60);
             this.Options.TabIndex = 7;
@@ -166,12 +168,43 @@ namespace PhasmophobiaChallenge.Panel
             this.Options.UseVisualStyleBackColor = false;
             this.Options.Click += new System.EventHandler(this.Options_Click);
             // 
+            // VersionLabel
+            // 
+            this.VersionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.VersionLabel.Font = new System.Drawing.Font("Yahfie", 25F, System.Drawing.FontStyle.Bold);
+            this.VersionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
+            this.VersionLabel.Location = new System.Drawing.Point(636, 434);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(171, 32);
+            this.VersionLabel.TabIndex = 8;
+            this.VersionLabel.Text = "Version: 0.1";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Exit
+            // 
+            this.Exit.BackColor = System.Drawing.Color.Transparent;
+            this.Exit.BackgroundImage = global::PhasmophobiaChallenge.Properties.Resources.main_menu_panel_button_background;
+            this.Exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Exit.FlatAppearance.BorderSize = 0;
+            this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exit.Font = new System.Drawing.Font("Yahfie", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
+            this.Exit.Location = new System.Drawing.Point(533, 363);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(262, 60);
+            this.Exit.TabIndex = 9;
+            this.Exit.Text = "Exit";
+            this.Exit.UseVisualStyleBackColor = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
+            // 
             // TitleScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PhasmophobiaChallenge.Properties.Resources.phasmophobia_whiteboard;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.Options);
             this.Controls.Add(this.Next);
             this.Controls.Add(this.Previous);
@@ -198,5 +231,7 @@ namespace PhasmophobiaChallenge.Panel
         private System.Windows.Forms.Button Previous;
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.Button Options;
+        private System.Windows.Forms.Label VersionLabel;
+        private System.Windows.Forms.Button Exit;
     }
 }

@@ -89,8 +89,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
                 JobLabel.Text = string.Format("{0}: {1}", translator.GetString(EString.Job), translator.GetString(EString.Job));
                 FlowLayoutTraitPanel.VerticalScroll.Enabled = false;
                 FlowLayoutTraitPanel.Controls.Clear();
-                FlowLayoutInventoryPanel.VerticalScroll.Enabled = false;
-                FlowLayoutInventoryPanel.Controls.Clear();
             }
         }
 

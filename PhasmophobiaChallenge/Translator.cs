@@ -36,6 +36,8 @@ namespace PhasmophobiaChallenge
         ConfirmDeleteProfile,
         Yes,
         No,
+        Version,
+        Exit,
         //Ghost types
         Spirit,
         Wraith,
@@ -190,6 +192,8 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.ConfirmDeleteProfile, "Voulez-vous supprimer ce profil?");
                 local.AddTranslation(EString.Yes, "Oui");
                 local.AddTranslation(EString.No, "Non");
+                local.AddTranslation(EString.Version, "Version");
+                local.AddTranslation(EString.Exit, "Quitter");
 
                 //Ghost types
                 local.AddTranslation(EString.Spirit, "Esprit");
@@ -310,6 +314,8 @@ namespace PhasmophobiaChallenge
                 local.AddTranslation(EString.ConfirmDeleteProfile, "Do you want to delete this profile?");
                 local.AddTranslation(EString.Yes, "Yes");
                 local.AddTranslation(EString.No, "No");
+                local.AddTranslation(EString.Version, "Version");
+                local.AddTranslation(EString.Exit, "Exit");
 
                 //Ghost types
                 local.AddTranslation(EString.Spirit, "Spirit");

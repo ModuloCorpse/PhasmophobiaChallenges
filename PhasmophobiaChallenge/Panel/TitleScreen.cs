@@ -7,6 +7,7 @@ namespace PhasmophobiaChallenge.Panel
 {
     public partial class TitleScreen : APhasmophobiaCompanionPanel
     {
+        private static string ms_Version = "1.0";
         private int m_Idx = 0;
         private List<APhasmophobiaCompanionPanel> m_Panels = new List<APhasmophobiaCompanionPanel>();
         private readonly Dictionary<Button, EPanelType> m_ButtonToType = new Dictionary<Button, EPanelType>();
@@ -29,6 +30,7 @@ namespace PhasmophobiaChallenge.Panel
 
         public override void OnOpen()
         {
+            VersionLabel.Text = string.Format("{0}: {1}", GetTranslator().GetString(EString.Version), ms_Version);
             IEnumerable<APhasmophobiaCompanionPanel> panels = GetMainWindow().GetPanels();
             foreach (APhasmophobiaCompanionPanel panel in panels)
             {
@@ -43,6 +45,8 @@ namespace PhasmophobiaChallenge.Panel
             PanelUIManager.RegisterImageButton(Previous, Properties.Resources.left_ui_arrow_border, Properties.Resources.left_ui_arrow_border_over, Properties.Resources.left_ui_arrow_border_over);
             PanelUIManager.RegisterImageButton(Next, Properties.Resources.right_ui_arrow_border, Properties.Resources.right_ui_arrow_border_over, Properties.Resources.right_ui_arrow_border_over);
             PanelUIManager.RegisterImageButton(Options, Properties.Resources.main_menu_panel_button_background, Properties.Resources.main_menu_panel_button_background_over, Properties.Resources.main_menu_panel_button_background_over);
+            PanelUIManager.RegisterImageButton(Exit, Properties.Resources.main_menu_panel_button_background, Properties.Resources.main_menu_panel_button_background_over, Properties.Resources.main_menu_panel_button_background_over);
+            GetTranslator().RegisterControl(EString.Exit, Exit);
             UpdateButtons();
         }
 
@@ -142,6 +146,11 @@ namespace PhasmophobiaChallenge.Panel
         private void Options_Click(object sender, EventArgs e)
         {
             GetMainWindow().SetPanel(EPanelType.Option);
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            GetMainWindow().Close();
         }
     }
 }
