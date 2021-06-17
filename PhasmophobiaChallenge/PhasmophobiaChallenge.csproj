@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AA4B5DA-98E4-4005-B3D2-58DB88C642A6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PhasmophobiaChallenge</RootNamespace>
+    <AssemblyName>PhasmophobiaChallenge</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DSharpPlus, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DSharpPlus.4.0.0-rc1\lib\netstandard2.0\DSharpPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Emzi0767.Common, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Emzi0767.Common.2.3.0\lib\net45\Emzi0767.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Json, Version=2.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Json.4.7.1\lib\net461\System.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.WebSockets.4.3.0\lib\net46\System.Net.WebSockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.WebSockets.Client.4.3.2\lib\net46\System.Net.WebSockets.Client.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AManagerButton.cs" />
+    <Compile Include="APhasmophobiaCompanionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataFile.cs" />
+    <Compile Include="DataFragment.cs" />
+    <Compile Include="IJsonable.cs" />
+    <Compile Include="Json.cs" />
+    <Compile Include="Panel\Discord\Challenge Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\Discord\Challenge Panel.Designer.cs">
+      <DependentUpon>Challenge Panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Discord\Challenge.cs" />
+    <Compile Include="Panel\Discord\DiscordIdPropertyControl.cs" />
+    <Compile Include="Panel\Discord\MemberPropertyControlBuilder.cs" />
+    <Compile Include="Panel\Discord\DiscordPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\Discord\DiscordPanel.Designer.cs">
+      <DependentUpon>DiscordPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Discord\ChannelPropertyControlBuilder.cs" />
+    <Compile Include="Panel\DummyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\DummyPanel.Designer.cs">
+      <DependentUpon>DummyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="PanelUIManager.cs" />
+    <Compile Include="Panel\OptionPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\OptionPanel.Designer.cs">
+      <DependentUpon>OptionPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Speedrun\Evidence.cs" />
+    <Compile Include="Panel\Speedrun\Ghost.cs" />
+    <Compile Include="Panel\StoryMode\InventoryItemUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\StoryMode\InventoryItemUI.Designer.cs">
+      <DependentUpon>InventoryItemUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\StoryMode\StoryModeData.cs" />
+    <Compile Include="Panel\StoryMode\StoryModePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\StoryMode\StoryModePanel.Designer.cs">
+      <DependentUpon>StoryModePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Panel\RandomStuff\RandomStuffPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\RandomStuff\RandomStuffPanel.Designer.cs">
+      <DependentUpon>RandomStuffPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageButton.cs" />
+    <Compile Include="Properties\Discord.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Discord.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\APropertyControl.cs" />
+    <Compile Include="Settings\PropertiesControlFactory.cs" />
+    <Compile Include="Settings\PropertiesControls\PrivatePropertyControlBuilder.cs" />
+    <Compile Include="Settings\PropertiesControls\ULongPropertyControl.cs" />
+    <Compile Include="Settings\PropertiesControls\TextPropertyControl.cs" />
+    <Compile Include="Settings\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\Speedrun\SpeedrunPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\Speedrun\SpeedrunPanel.Designer.cs">
+      <DependentUpon>SpeedrunPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextButton.cs" />
+    <Compile Include="Panel\TitleScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\TitleScreen.Designer.cs">
+      <DependentUpon>TitleScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Translator.cs" />
+    <EmbeddedResource Include="Panel\Discord\Challenge Panel.resx">
+      <DependentUpon>Challenge Panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\Discord\DiscordPanel.resx">
+      <DependentUpon>DiscordPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\DummyPanel.resx">
+      <DependentUpon>DummyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\OptionPanel.resx">
+      <DependentUpon>OptionPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\StoryMode\InventoryItemUI.resx">
+      <DependentUpon>InventoryItemUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\StoryMode\StoryModePanel.resx">
+      <DependentUpon>StoryModePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Panel\RandomStuff\RandomStuffPanel.resx">
+      <DependentUpon>RandomStuffPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\Speedrun\SpeedrunPanel.resx">
+      <DependentUpon>SpeedrunPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\TitleScreen.resx">
+      <DependentUpon>TitleScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asylum blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bleasdale Farmhouse blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Brownstone High School blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edgefield Street House blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grafton Farmhouse blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prison blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow_clicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow_clicked_reversed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow_over_reversed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_arrow_reversed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ridgeview Road House blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Discord.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Discord.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Tanglewood Street House blur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Phasmophobia Whiteboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_ui_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phasmophobia_whiteboard_radio_antena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_ui_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_menu_panel_button_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\main_menu_panel_button_background_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_ui_arrow_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left_ui_arrow_border_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_ui_arrow_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_ui_arrow_border_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app-icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list_ui_border.png" />
+    <None Include="Resources\left_ui_arrow_small.png" />
+    <None Include="Resources\right_ui_arrow_small.png" />
+    <None Include="Resources\add_ui.png" />
+    <None Include="Resources\remove_ui.png" />
+    <None Include="Resources\delete_ui.png" />
+    <None Include="Resources\add_ui_small.png" />
+    <None Include="Resources\remove_ui_small.png" />
+    <Content Include="Resources\tv_remote_icon.png" />
+    <Content Include="Resources\waiting_form.gif" />
+    <Content Include="vs-chromium-project.txt" />
+    <None Include="Resources\tv_remote_icon_over.png" />
+    <None Include="Resources\tv_remote_icon_clicked.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

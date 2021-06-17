@@ -1,0 +1,3 @@
+﻿[SearchableFiles.include]
+*.cs
+*.config
