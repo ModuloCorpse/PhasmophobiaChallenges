@@ -63,17 +63,12 @@ namespace PhasmophobiaChallenge
             Controls.Clear();
             if (panel != null)
             {
-                if (type != EPanelType.TitleScreen)
-                    Text = "Pasmophobia Companion [" + m_Translator.GetString(panel.GetName()) + "]";
-                else
-                    Text = "Pasmophobia Companion";
                 panel.Open();
                 Controls.Add(panel.AsControl());
             }
-            else
-                Text = "Pasmophobia Companion";
             m_CurrentPanel = panel;
             m_CurrentPanelType = type;
+            UpdateTitle();
         }
 
         public void UpdateTitle()

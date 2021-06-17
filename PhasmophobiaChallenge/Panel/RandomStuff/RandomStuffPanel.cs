@@ -53,10 +53,10 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
 
         private void SetSelectedItemTo(string item)
         {
-            ItemName.Text = item;
-            ItemName.Font = new Font(ItemName.Font.FontFamily, 42.0f, ItemName.Font.Style);
-            while (ItemName.Width < TextRenderer.MeasureText(ItemName.Text, new Font(ItemName.Font.FontFamily, ItemName.Font.Size, ItemName.Font.Style)).Width)
-                ItemName.Font = new Font(ItemName.Font.FontFamily, ItemName.Font.Size - 0.5f, ItemName.Font.Style);
+            SizeF stringSize = TextRenderer.MeasureText(ItemName.Text, ItemName.Font);
+            float newFontSize = ItemName.Font.Size * Math.Min(ItemName.Size.Height / stringSize.Height, (ItemName.Size.Width - 10) / stringSize.Width);
+            if (newFontSize < ItemName.Font.Size)
+                ItemName.Font = new Font(ItemName.Font.FontFamily, newFontSize, ItemName.Font.Style);
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)

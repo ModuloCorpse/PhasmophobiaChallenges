@@ -9,10 +9,10 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
     {
         private static readonly int EVIDENCE_LIMIT = 3;
         private List<KeyValuePair<EString, Control>> m_RegisteredControls = new List<KeyValuePair<EString, Control>>();
-        private List<Ghost> m_Ghosts = new List<Ghost>();
-        private HashSet<Evidence> m_SelectedEvidence = new HashSet<Evidence>();
-        private Dictionary<CheckBox, Evidence> m_CheckBoxToEvidence = new Dictionary<CheckBox, Evidence>();
-        private Dictionary<Evidence, CheckBox> m_EvidenceToCheckBox = new Dictionary<Evidence, CheckBox>();
+        private readonly List<Ghost> m_Ghosts = new List<Ghost>();
+        private readonly HashSet<Evidence> m_SelectedEvidence = new HashSet<Evidence>();
+        private readonly Dictionary<CheckBox, Evidence> m_CheckBoxToEvidence = new Dictionary<CheckBox, Evidence>();
+        private readonly Dictionary<Evidence, CheckBox> m_EvidenceToCheckBox = new Dictionary<Evidence, CheckBox>();
 
         public SpeedrunPanel(MainWindow mainWindow): base(mainWindow, EPanelType.Speedrun, EString.Speedrun)
         {
@@ -37,13 +37,38 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
             RegisterGhost(EString.Oni, Evidence.SpiritBox, Evidence.EMF5, Evidence.GhostWriting);
             RegisterGhost(EString.Yokai, Evidence.SpiritBox, Evidence.GhostWriting, Evidence.GhostOrb);
             RegisterGhost(EString.Hantu, Evidence.Fingerprints, Evidence.GhostWriting, Evidence.GhostOrb);
-            int ghostY = 500;
+            MoveGhostLabels();
+            UpdateEvidences();
+        }
+
+        private void MoveGhostLabels()
+        {
+            Translator translator = GetTranslator();
+            int labelListHeight = 490;
+            int labelWidth = 200;
+            float fontSize = 20;
+            int labelHeight = labelListHeight / (m_Ghosts.Count - 1); // - 1 as we don't count the last one which will be placed at Y = 500
+            SizeF stringSize = TextRenderer.MeasureText("A", new Font("Yahfie", fontSize));
+            float newFontSize = fontSize * Math.Min(labelHeight / stringSize.Height, (labelWidth - 10) / stringSize.Width);
+            if (newFontSize < fontSize)
+                fontSize = newFontSize;
+            int labelYPosition = 10;
             foreach (Ghost ghost in m_Ghosts)
             {
-                ghost.GetLabel().Location = new Point(25, ghostY);
-                ghostY -= 37;
+                Label ghostLabel = new Label()
+                {
+                    Location = new Point(25, labelYPosition),
+                    Font = new Font("Yahfie", fontSize),
+                    AutoSize = false,
+                    Size = new Size(labelWidth, labelHeight),
+                    BackColor = Color.Transparent,
+                    ForeColor = Color.White,
+                };
+                labelYPosition += labelHeight;
+                translator.RegisterControl(ghost.GetName(), ghostLabel);
+                Controls.Add(ghostLabel);
+                ghost.SetLabel(ghostLabel);
             }
-            UpdateEvidences();
         }
 
         private void RegisterEvidenceCheckBox(Evidence evidence, EString name)
@@ -71,11 +96,10 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
 
         private void RegisterGhost(EString name, params Evidence[] evidences)
         {
-            Ghost ghost = new Ghost(name, GetTranslator());
+            Ghost ghost = new Ghost(name);
             foreach (Evidence evidence in evidences)
                 ghost.AddEvidence(evidence);
             m_Ghosts.Add(ghost);
-            Controls.Add(ghost.GetLabel());
         }
 
         public override void OnOpen()
@@ -84,6 +108,18 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
             foreach (KeyValuePair<EString, Control> pair in m_RegisteredControls)
                 translator.RegisterControl(pair.Key, pair.Value);
             PanelUIManager.RegisterImageButton(BackButton, Properties.Resources.red_arrow, Properties.Resources.red_arrow_over, Properties.Resources.red_arrow_clicked);
+            Reset();
+        }
+
+        private void Reset()
+        {
+            m_SelectedEvidence.Clear();
+            foreach (CheckBox checkBox in m_EvidenceToCheckBox.Values)
+            {
+                checkBox.Checked = false;
+                checkBox.ForeColor = Color.White;
+            }
+            UpdateEvidences();
         }
 
         private void UpdateEvidences()

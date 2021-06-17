@@ -7,22 +7,18 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
     internal class Ghost
     {
         private HashSet<Evidence> m_Evidences = new HashSet<Evidence>();
-        private readonly Label m_Label;
+        private Label m_Label;
+        private EString m_Name;
 
-        internal Ghost(EString name, Translator translator)
+        internal Ghost(EString name)
         {
-            m_Label = new Label
-            {
-                BackColor = Color.Transparent,
-                Font = new Font("Yahfie", 20),
-                ForeColor = Color.White,
-                AutoSize = true,
-            };
-            translator.RegisterControl(name, m_Label);
+            m_Name = name;
         }
 
         internal HashSet<Evidence> GetEvidences() { return m_Evidences; }
         internal Label GetLabel() { return m_Label; }
+        internal void SetLabel(Label label) { m_Label = label; }
+        internal EString GetName() { return m_Name; }
 
         internal void AddEvidence(Evidence evidence) { m_Evidences.Add(evidence); }
 
