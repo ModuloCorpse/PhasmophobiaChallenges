@@ -13,6 +13,9 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
         public RandomStuffPanel(MainWindow mainWindow): base(mainWindow, EPanelType.RandomStuff, EString.RandomStuff)
         {
             InitializeComponent();
+            ItemName.Font = new Font(GetDefaultFontFamily(), 42f, FontStyle.Bold);
+            RandomizeButton.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
+            ResetButton.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
         }
 
         public override void OnOpen()
@@ -57,6 +60,7 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
             float newFontSize = ItemName.Font.Size * Math.Min(ItemName.Size.Height / stringSize.Height, (ItemName.Size.Width - 10) / stringSize.Width);
             if (newFontSize < ItemName.Font.Size)
                 ItemName.Font = new Font(ItemName.Font.FontFamily, newFontSize, ItemName.Font.Style);
+            ItemName.Text = item;
         }
 
         private void RandomizeButton_Click(object sender, EventArgs e)

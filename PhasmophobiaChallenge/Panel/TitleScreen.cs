@@ -16,16 +16,24 @@ namespace PhasmophobiaChallenge.Panel
         {
             HideFromMenu();
             InitializeComponent();
+            PanelButton1.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
             PanelButton1.TextChanged += new EventHandler(OnScreenTextChanged);
             PanelButton1.Click += new EventHandler(OnScreenButtonClicked);
+            PanelButton2.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
             PanelButton2.TextChanged += new EventHandler(OnScreenTextChanged);
             PanelButton2.Click += new EventHandler(OnScreenButtonClicked);
+            PanelButton3.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
             PanelButton3.TextChanged += new EventHandler(OnScreenTextChanged);
             PanelButton3.Click += new EventHandler(OnScreenButtonClicked);
+            PanelButton4.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
             PanelButton4.TextChanged += new EventHandler(OnScreenTextChanged);
             PanelButton4.Click += new EventHandler(OnScreenButtonClicked);
+            PanelButton5.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
             PanelButton5.TextChanged += new EventHandler(OnScreenTextChanged);
             PanelButton5.Click += new EventHandler(OnScreenButtonClicked);
+            Options.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
+            VersionLabel.Font = new Font(GetDefaultFontFamily(), 25f, FontStyle.Bold);
+            Exit.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
         }
 
         public override void OnOpen()
@@ -118,9 +126,9 @@ namespace PhasmophobiaChallenge.Panel
                 SizeF stringSize = TextRenderer.MeasureText(button.Text, button.Font);
                 float newFontSize = button.Font.Size * Math.Min(button.Size.Height / stringSize.Height, (button.Size.Width - 12) / stringSize.Width);
                 if (newFontSize < 36)
-                    button.Font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
+                    button.Font = new Font(GetDefaultFontFamily(), newFontSize, FontStyle.Bold);
                 else
-                    button.Font = new Font(GetFontFamily(), 36, FontStyle.Bold);
+                    button.Font = new Font(GetDefaultFontFamily(), 36, FontStyle.Bold);
             }
         }
 

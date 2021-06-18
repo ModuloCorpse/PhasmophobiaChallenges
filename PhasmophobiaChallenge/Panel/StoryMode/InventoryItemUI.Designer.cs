@@ -48,7 +48,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // 
             // ItemInventory
             // 
-            this.ItemInventory.Font = new System.Drawing.Font(GetFontFamily(), 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ItemInventory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.ItemInventory.Location = new System.Drawing.Point(55, 0);
             this.ItemInventory.Name = "ItemInventory";

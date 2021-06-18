@@ -423,9 +423,9 @@ namespace PhasmophobiaChallenge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] yahfie {
+        internal static byte[] Yahfie {
             get {
-                object obj = ResourceManager.GetObject("yahfie", resourceCulture);
+                object obj = ResourceManager.GetObject("Yahfie", resourceCulture);
                 return ((byte[])(obj));
             }
         }

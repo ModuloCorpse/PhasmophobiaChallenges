@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PhasmophobiaChallenge.Panel
@@ -9,6 +10,9 @@ namespace PhasmophobiaChallenge.Panel
         {
             HideFromMenu();
             InitializeComponent();
+            Local.Font = new Font(GetDefaultFontFamily(), 36f, FontStyle.Bold);
+            BackButton.Font = new Font(GetDefaultFontFamily(), 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+
         }
 
         public override void OnOpen()

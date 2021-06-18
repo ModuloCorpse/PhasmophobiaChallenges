@@ -55,7 +55,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // MoneyLabel
             // 
             this.MoneyLabel.BackColor = System.Drawing.Color.Transparent;
-            this.MoneyLabel.Font = new System.Drawing.Font(GetFontFamily(), 24F);
             this.MoneyLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.MoneyLabel.Location = new System.Drawing.Point(210, 120);
             this.MoneyLabel.Name = "MoneyLabel";
@@ -67,7 +66,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // JobLabel
             // 
             this.JobLabel.BackColor = System.Drawing.Color.Transparent;
-            this.JobLabel.Font = new System.Drawing.Font(GetFontFamily(), 24F);
             this.JobLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.JobLabel.Location = new System.Drawing.Point(470, 120);
             this.JobLabel.Name = "JobLabel";
@@ -79,7 +77,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // TraitsLabel
             // 
             this.TraitsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.TraitsLabel.Font = new System.Drawing.Font(GetFontFamily(), 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TraitsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.TraitsLabel.Location = new System.Drawing.Point(135, 160);
             this.TraitsLabel.Name = "TraitsLabel";
@@ -91,7 +88,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // InventoryLabel
             // 
             this.InventoryLabel.BackColor = System.Drawing.Color.Transparent;
-            this.InventoryLabel.Font = new System.Drawing.Font(GetFontFamily(), 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InventoryLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.InventoryLabel.Location = new System.Drawing.Point(475, 160);
             this.InventoryLabel.Name = "InventoryLabel";
@@ -131,7 +127,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackButton.FlatAppearance.BorderSize = 0;
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackButton.Font = new System.Drawing.Font(GetFontFamily(), 28F, System.Drawing.FontStyle.Bold);
             this.BackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.BackButton.Location = new System.Drawing.Point(658, 62);
             this.BackButton.Name = "BackButton";
@@ -148,7 +143,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             this.NewProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.NewProfile.FlatAppearance.BorderSize = 0;
             this.NewProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewProfile.Font = new System.Drawing.Font(GetFontFamily(), 24F, System.Drawing.FontStyle.Bold);
             this.NewProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.NewProfile.Location = new System.Drawing.Point(488, 62);
             this.NewProfile.Name = "NewProfile";
@@ -161,7 +155,6 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             // Profile
             // 
             this.Profile.BackColor = System.Drawing.Color.Transparent;
-            this.Profile.Font = new System.Drawing.Font(GetFontFamily(), 28F, System.Drawing.FontStyle.Bold);
             this.Profile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(108)))), ((int)(((byte)(124)))));
             this.Profile.Image = global::PhasmophobiaChallenge.Properties.Resources.main_menu_panel_button_background;
             this.Profile.Location = new System.Drawing.Point(191, 67);

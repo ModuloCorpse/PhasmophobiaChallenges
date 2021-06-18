@@ -17,13 +17,12 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 
         public InventoryItemUI(StoryModePanel panel, EItemType itemType)
         {
+            InitializeComponent();
             m_Panel = panel;
             m_ItemType = itemType;
-            InitializeComponent();
+            ItemInventory.Font = new Font(panel.GetDefaultFontFamily(), 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             UpdateLabel();
         }
-
-        private FontFamily GetFontFamily() { return m_Panel.GetFontFamily(); }
 
         public void OnOpen()
         {
@@ -38,7 +37,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             SizeF stringSize = TextRenderer.MeasureText(ItemInventory.Text, ItemInventory.Font);
             float newFontSize = ItemInventory.Font.Size * Math.Min(ItemInventory.Size.Height / stringSize.Height, (ItemInventory.Size.Width - 10) / stringSize.Width);
             if (newFontSize < ItemInventory.Font.Size)
-                ItemInventory.Font = new Font(GetFontFamily(), newFontSize, FontStyle.Bold);
+                ItemInventory.Font = new Font(m_Panel.GetDefaultFontFamily(), newFontSize, FontStyle.Bold);
         }
 
         private void BuyItem_Click(object sender, EventArgs e)

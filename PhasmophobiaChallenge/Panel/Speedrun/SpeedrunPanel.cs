@@ -48,7 +48,7 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
             int labelWidth = 200;
             float fontSize = 20;
             int labelHeight = labelListHeight / (m_Ghosts.Count - 1); // - 1 as we don't count the last one which will be placed at Y = 500
-            SizeF stringSize = TextRenderer.MeasureText("A", new Font(GetFontFamily(), fontSize));
+            SizeF stringSize = TextRenderer.MeasureText("A", new Font(GetDefaultFontFamily(), fontSize));
             float newFontSize = fontSize * Math.Min(labelHeight / stringSize.Height, (labelWidth - 10) / stringSize.Width);
             if (newFontSize < fontSize)
                 fontSize = newFontSize;
@@ -58,7 +58,7 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
                 Label ghostLabel = new Label()
                 {
                     Location = new Point(25, labelYPosition),
-                    Font = new Font(GetFontFamily(), fontSize),
+                    Font = new Font(GetDefaultFontFamily(), fontSize),
                     AutoSize = false,
                     Size = new Size(labelWidth, labelHeight),
                     BackColor = Color.Transparent,
@@ -78,7 +78,7 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
                 Appearance = Appearance.Button,
                 BackColor = Color.Transparent,
                 FlatStyle = FlatStyle.Flat,
-                Font = new Font(GetFontFamily(), 24),
+                Font = new Font(GetDefaultFontFamily(), 24),
                 ForeColor = Color.White,
                 UseVisualStyleBackColor = false,
                 AutoSize = true

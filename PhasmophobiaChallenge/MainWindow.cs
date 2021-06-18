@@ -3,6 +3,7 @@
 using PhasmophobiaChallenge.Panel.RandomStuff;
 using PhasmophobiaChallenge.Panel.Speedrun;
 using PhasmophobiaChallenge.Panel.StoryMode;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -13,20 +14,17 @@ namespace PhasmophobiaChallenge
 {
     public partial class MainWindow : Form
     {
+        private readonly int m_DefaultFont;
         private readonly DataFile m_Config;
         private readonly Translator m_Translator;
         private EPanelType m_CurrentPanelType = EPanelType.Invalid;
         private APhasmophobiaCompanionPanel m_CurrentPanel = null;
         private readonly Dictionary<EPanelType, APhasmophobiaCompanionPanel> m_Panels = new Dictionary<EPanelType, APhasmophobiaCompanionPanel>();
-        PrivateFontCollection m_PrivateFontCollection = new PrivateFontCollection();
+        private readonly PrivateFontCollection m_PrivateFontCollection = new PrivateFontCollection();
 
         public MainWindow()
         {
-            int fontLength = Properties.Resources.yahfie.Length;
-            byte[] fontdata = Properties.Resources.yahfie;
-            System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
-            Marshal.Copy(fontdata, 0, data, fontLength);
-            m_PrivateFontCollection.AddMemoryFont(data, fontLength);
+            m_DefaultFont = LoadFont(Properties.Resources.Yahfie);
             m_Config = new DataFile();
             m_Translator = new Translator(m_Config.GetFragment(EPanelType.Option));
             InitializeComponent();
@@ -36,9 +34,17 @@ namespace PhasmophobiaChallenge
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
+        private int LoadFont(byte[] fontData)
+        {
+            IntPtr data = Marshal.AllocCoTaskMem(fontData.Length);
+            Marshal.Copy(fontData, 0, data, fontData.Length);
+            m_PrivateFontCollection.AddMemoryFont(data, fontData.Length);
+            return m_PrivateFontCollection.Families.Length - 1;
+        }
+
         public DataFragment GetDataFragment(EPanelType type) { return m_Config.GetFragment(type); }
         public Translator GetTranslator() { return m_Translator; }
-        public FontFamily GetFontFamily() { return m_PrivateFontCollection.Families[0]; }
+        public FontFamily GetDefaultFontFamily() { return m_PrivateFontCollection.Families[m_DefaultFont]; }
         public IEnumerable<APhasmophobiaCompanionPanel> GetPanels() { return m_Panels.Values; }
 
         private void InitializePanels()

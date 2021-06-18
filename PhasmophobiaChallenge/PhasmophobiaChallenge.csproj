@@ -267,6 +267,7 @@
       <DependentUpon>TitleScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Resources\StrawberryCupcakes.ttf" />
     <None Include="Resources\yahfie.ttf" />
   </ItemGroup>
   <ItemGroup>

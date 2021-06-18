@@ -12,7 +12,7 @@ namespace PhasmophobiaChallenge
         private readonly MainWindow m_MainWindow;
         private readonly Translator m_Translator;
         private readonly DataFragment m_Data;
-        private readonly FontFamily m_FontFamily;
+        private readonly FontFamily m_DefaultFontFamily;
 
         [Obsolete("Designer only", true)]
         public APhasmophobiaCompanionPanel()
@@ -20,7 +20,7 @@ namespace PhasmophobiaChallenge
             m_MainWindow = null;
             m_Translator = null;
             m_Data = null;
-            m_FontFamily = null;
+            m_DefaultFontFamily = null;
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
@@ -31,14 +31,14 @@ namespace PhasmophobiaChallenge
             m_MainWindow = mainWindow;
             m_Translator = mainWindow.GetTranslator();
             m_Data = mainWindow.GetDataFragment(type);
-            m_FontFamily = mainWindow.GetFontFamily();
+            m_DefaultFontFamily = mainWindow.GetDefaultFontFamily();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
         protected MainWindow GetMainWindow() { return m_MainWindow; }
         public Translator GetTranslator() { return m_Translator; }
         protected DataFragment GetData() { return m_Data; }
-        public FontFamily GetFontFamily() { return m_FontFamily; }
+        public FontFamily GetDefaultFontFamily() { return m_DefaultFontFamily; }
 
         public bool ShowInMenu() { return m_ShowInMenu; }
         public EPanelType GetPanelType() { return m_Type; }
