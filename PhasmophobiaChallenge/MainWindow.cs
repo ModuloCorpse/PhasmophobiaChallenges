@@ -1,7 +1,7 @@
 ﻿using PhasmophobiaChallenge.Panel;
 //using PhasmophobiaChallenge.Panel.Discord;
 using PhasmophobiaChallenge.Panel.RandomStuff;
-using PhasmophobiaChallenge.Panel.Speedrun;
+using PhasmophobiaChallenge.Panel.Evidences;
 using PhasmophobiaChallenge.Panel.StoryMode;
 using System;
 using System.Collections.Generic;
@@ -53,13 +53,13 @@ namespace PhasmophobiaChallenge
             RegisterPanel(new OptionPanel(this));
             RegisterPanel(new StoryModePanel(this));
             RegisterPanel(new RandomStuffPanel(this));
-            RegisterPanel(new SpeedrunPanel(this));
+            RegisterPanel(new EvidencesPanel(this));
             //RegisterPanel(new DiscordPanel(this));
-            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy1, EString.Dummy));
-            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy2, EString.Dummy));
-            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy3, EString.Dummy));
-            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy4, EString.Dummy));
-            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy5, EString.Dummy));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy1, "panel.dummy"));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy2, "panel.dummy"));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy3, "panel.dummy"));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy4, "panel.dummy"));
+            //RegisterPanel(new DummyPanel(this, EPanelType.Dummy5, "panel.dummy"));
         }
 
         private void RegisterPanel(APhasmophobiaCompanionPanel panel)
@@ -91,9 +91,9 @@ namespace PhasmophobiaChallenge
         public void UpdateTitle()
         {
             if (m_CurrentPanel != null && m_CurrentPanelType != EPanelType.TitleScreen)
-                Text = m_Translator.GetString(EString.AppTitle) + " [" + m_Translator.GetString(m_CurrentPanel.GetName()) + "]";
+                Text = m_Translator.GetString("other.apptitle") + " [" + m_Translator.GetString(m_CurrentPanel.GetName()) + "]";
             else
-                Text = m_Translator.GetString(EString.AppTitle);
+                Text = m_Translator.GetString("other.apptitle");
         }
 
         public void SetPanel(EPanelType page)

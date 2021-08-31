@@ -4,7 +4,7 @@ namespace PhasmophobiaChallenge.Panel
 {
     public partial class DummyPanel : APhasmophobiaCompanionPanel
     {
-        public DummyPanel(MainWindow mainWindow, EPanelType type, EString name): base(mainWindow, type, name)
+        public DummyPanel(MainWindow mainWindow, EPanelType type, string name): base(mainWindow, type, name)
         {
             InitializeComponent();
         }

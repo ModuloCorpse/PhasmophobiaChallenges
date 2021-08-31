@@ -1,0 +1,98 @@
+﻿{
+  "evidences": [
+    {
+      "id": 0,
+      "name": "evidences.freezing"
+    },
+    {
+      "id": 1,
+      "name": "evidences.writing"
+    },
+    {
+      "id": 2,
+      "name": "evidences.orb"
+    },
+    {
+      "id": 3,
+      "name": "evidences.fingerprints"
+    },
+    {
+      "id": 4,
+      "name": "evidences.spirit"
+    },
+    {
+      "id": 5,
+      "name": "evidences.emf"
+    },
+    {
+      "id": 6,
+      "name": "evidences.dots"
+    }
+  ],
+  "ghosts": [
+    {
+      "name": "ghost.spirit",
+      "evidences": [ 5, 1, 4 ]
+    },
+    {
+      "name": "ghost.wraith",
+      "evidences": [ 5, 6, 4 ]
+    },
+    {
+      "name": "ghost.phantom",
+      "evidences": [ 6, 4, 3 ]
+    },
+    {
+      "name": "ghost.poltergeist",
+      "evidences": [ 1, 4, 3 ]
+    },
+    {
+      "name": "ghost.banshee",
+      "evidences": [ 2, 6, 3 ]
+    },
+    {
+      "name": "ghost.jinn",
+      "evidences": [ 5, 0, 3 ]
+    },
+    {
+      "name": "ghost.mare",
+      "evidences": [ 2, 1, 4 ]
+    },
+    {
+      "name": "ghost.revenant",
+      "evidences": [ 2, 1, 0 ]
+    },
+    {
+      "name": "ghost.shade",
+      "evidences": [ 5, 1, 0 ]
+    },
+    {
+      "name": "ghost.demon",
+      "evidences": [ 1, 0, 3 ]
+    },
+    {
+      "name": "ghost.yurei",
+      "evidences": [ 2, 6, 0 ]
+    },
+    {
+      "name": "ghost.oni",
+      "evidences": [ 5, 6, 0 ]
+    },
+    {
+      "name": "ghost.yokai",
+      "evidences": [ 2, 6, 4 ]
+    },
+    {
+      "name": "ghost.hantu",
+      "evidences": [ 2, 0, 3 ]
+    },
+    {
+      "name": "ghost.goryo",
+      "evidences": [ 5, 6, 3 ]
+    },
+    {
+      "name": "ghost.myling",
+      "evidences": [ 5, 1, 3 ]
+    }
+  ]
+}

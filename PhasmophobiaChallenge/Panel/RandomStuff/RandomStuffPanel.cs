@@ -8,9 +8,9 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
     public partial class RandomStuffPanel : APhasmophobiaCompanionPanel
     {
         private static readonly Random m_Random = new Random();
-        private readonly List<EString> m_InventoryList = new List<EString>();
+        private readonly List<string> m_InventoryList = new List<string>();
 
-        public RandomStuffPanel(MainWindow mainWindow): base(mainWindow, EPanelType.RandomStuff, EString.RandomStuff)
+        public RandomStuffPanel(MainWindow mainWindow): base(mainWindow, EPanelType.RandomStuff, "panel.randomstuff")
         {
             InitializeComponent();
             ItemName.Font = new Font(GetDefaultFontFamily(), 42f, FontStyle.Bold);
@@ -22,8 +22,8 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
         {
             ResetInventoryList();
             Translator translator = GetTranslator();
-            translator.RegisterControl(EString.Randomize, RandomizeButton);
-            translator.RegisterControl(EString.Reset, ResetButton);
+            translator.RegisterControl("other.randomize", RandomizeButton);
+            translator.RegisterControl("other.reset", ResetButton);
             PanelUIManager.RegisterTextButton(RandomizeButton, Color.White, Color.Red, Color.DarkRed);
             PanelUIManager.RegisterTextButton(ResetButton, Color.White, Color.Red, Color.DarkRed);
             PanelUIManager.RegisterImageButton(BackButton, Properties.Resources.red_arrow, Properties.Resources.red_arrow_over, Properties.Resources.red_arrow_clicked);
@@ -33,25 +33,11 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
         {
             SetSelectedItemTo("");
             m_InventoryList.Clear();
-            m_InventoryList.Add(EString.EMFReader);
-            m_InventoryList.Add(EString.Lighter);
-            m_InventoryList.Add(EString.Candle);
-            m_InventoryList.Add(EString.UVLight);
-            m_InventoryList.Add(EString.Crucifix);
-            m_InventoryList.Add(EString.VideoCamera);
-            m_InventoryList.Add(EString.SpiritBoxItem);
-            m_InventoryList.Add(EString.Salt);
-            m_InventoryList.Add(EString.SmudgeSticks);
-            m_InventoryList.Add(EString.Tripod);
-            m_InventoryList.Add(EString.MotionSensor);
-            m_InventoryList.Add(EString.SoundSensor);
-            m_InventoryList.Add(EString.SanityPills);
-            m_InventoryList.Add(EString.Thermometer);
-            m_InventoryList.Add(EString.GhostWritingBook);
-            m_InventoryList.Add(EString.InfraredLightSensor);
-            m_InventoryList.Add(EString.ParabolicMicrophone);
-            m_InventoryList.Add(EString.Glowstick);
-            m_InventoryList.Add(EString.HeadMountedCamera);
+
+            Json datas = new Json(Properties.Resources.randomstuff);
+            List<string> items = datas.GetArray<string>("items");
+            foreach (string item in items)
+                m_InventoryList.Add(item);
         }
 
         private void SetSelectedItemTo(string item)
@@ -77,7 +63,7 @@ namespace PhasmophobiaChallenge.Panel.RandomStuff
                 SetSelectedItemTo(item);
             }
             else
-                SetSelectedItemTo(GetTranslator().GetString(EString.OutOfItem));
+                SetSelectedItemTo(GetTranslator().GetString("other.outofitem"));
         }
 
         private void ResetButton_Click(object sender, EventArgs e)

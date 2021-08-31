@@ -8,7 +8,7 @@ namespace PhasmophobiaChallenge
     {
         private bool m_ShowInMenu = true;
         private EPanelType m_Type = EPanelType.Invalid;
-        private EString m_Name = EString.Invalid;
+        private string m_Name = "";
         private readonly MainWindow m_MainWindow;
         private readonly Translator m_Translator;
         private readonly DataFragment m_Data;
@@ -24,7 +24,7 @@ namespace PhasmophobiaChallenge
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
-        protected APhasmophobiaCompanionPanel(MainWindow mainWindow, EPanelType type, EString name)
+        protected APhasmophobiaCompanionPanel(MainWindow mainWindow, EPanelType type, string name)
         {
             m_Type = type;
             m_Name = name;
@@ -42,7 +42,7 @@ namespace PhasmophobiaChallenge
 
         public bool ShowInMenu() { return m_ShowInMenu; }
         public EPanelType GetPanelType() { return m_Type; }
-        public EString GetName() { return m_Name; }
+        public string GetName() { return m_Name; }
         public void HideFromMenu() { m_ShowInMenu = false; }
         public Control AsControl() { return this; }
 

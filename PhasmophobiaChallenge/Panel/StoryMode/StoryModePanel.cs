@@ -7,14 +7,15 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 {
     public partial class StoryModePanel : APhasmophobiaCompanionPanel
     {
+        private readonly StoryModeData m_Data = new StoryModeData();
         private const int DefaultFontSize = 20;
         private const int DefaultLabelWidth = 260;
         private const int DefaultLabelHeight = 25;
-        private readonly List<StoryModeData> m_Profiles = new List<StoryModeData>();
+        private readonly List<StoryModeProfile> m_Profiles = new List<StoryModeProfile>();
         private readonly List<InventoryItemUI> m_Inventory = new List<InventoryItemUI>();
         private int m_Current = 0;
 
-        public StoryModePanel(MainWindow mainWindow): base(mainWindow, EPanelType.StoryMode, EString.StoryMode)
+        public StoryModePanel(MainWindow mainWindow): base(mainWindow, EPanelType.StoryMode, "panel.storymode")
         {
             InitializeComponent();
 
@@ -27,7 +28,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             Profile.Font = new Font(GetDefaultFontFamily(), 28f, FontStyle.Bold);
 
             DataFragment data = GetData();
-            m_Profiles = data.GetArray<StoryModeData>("profiles");
+            m_Profiles = data.GetArray<StoryModeProfile>("profiles");
             if (data.Find("lastProfile"))
                 m_Current = Math.Min(data.Get<int>("lastProfile"), m_Profiles.Count);
             else
@@ -40,7 +41,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 
         public override void OnInitialize()
         {
-            foreach (EItemType itemType in Enum.GetValues(typeof(EItemType)))
+            foreach (int itemType in m_Data.GetItemID())
             {
                 InventoryItemUI item = new InventoryItemUI(this, itemType);
                 FlowLayoutInventoryPanel.Controls.Add(item);
@@ -51,10 +52,10 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         public override void OnOpen()
         {
             Translator translator = GetTranslator();
-            translator.RegisterControl(EString.Back, BackButton);
-            translator.RegisterControl(EString.NewProfile, NewProfile);
-            translator.RegisterControl(EString.Traits, TraitsLabel);
-            translator.RegisterControl(EString.Inventory, InventoryLabel);
+            translator.RegisterControl("other.back", BackButton);
+            translator.RegisterControl("storymode.text.newprofile", NewProfile);
+            translator.RegisterControl("storymode.text.traits", TraitsLabel);
+            translator.RegisterControl("storymode.text.inventory", InventoryLabel);
             PanelUIManager.RegisterImageButton(NewProfile, Properties.Resources.main_menu_panel_button_background, Properties.Resources.main_menu_panel_button_background_over, Properties.Resources.main_menu_panel_button_background_over);
             PanelUIManager.RegisterImageButton(BackButton, Properties.Resources.main_menu_panel_button_background, Properties.Resources.main_menu_panel_button_background_over, Properties.Resources.main_menu_panel_button_background_over);
             PanelUIManager.RegisterImageButton(PreviousProfile, Properties.Resources.left_ui_arrow_border, Properties.Resources.left_ui_arrow_border_over, Properties.Resources.left_ui_arrow_border_over);
@@ -86,18 +87,18 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             Translator translator = GetTranslator();
             if (m_Profiles.Count != 0)
             {
-                StoryModeData current = m_Profiles[m_Current];
+                StoryModeProfile current = m_Profiles[m_Current];
                 Profile.Text = current.GetName();
-                MoneyLabel.Text = string.Format("{0}: {1}$", translator.GetString(EString.Money), current.GetMoney());
-                JobLabel.Text = string.Format("{0}: {1}", translator.GetString(EString.Job), translator.GetString(StoryModeData.GetJobName(current.GetJob())));
+                MoneyLabel.Text = string.Format("{0}: {1}$", translator.GetString("storymode.text.money"), current.GetMoney());
+                JobLabel.Text = string.Format("{0}: {1}", translator.GetString("storymode.text.job"), translator.GetString(m_Data.GetJobName(current.GetJob())));
                 UpdateTraits(current);
                 UpdateInventory();
             }
             else
             {
                 Profile.Text = "";
-                MoneyLabel.Text = string.Format("{0}: 0$", translator.GetString(EString.Money));
-                JobLabel.Text = string.Format("{0}: {1}", translator.GetString(EString.Job), translator.GetString(EString.Job));
+                MoneyLabel.Text = string.Format("{0}: 0$", translator.GetString("storymode.text.money"));
+                JobLabel.Text = string.Format("{0}: {1}", translator.GetString("storymode.text.job"), translator.GetString("storymode.text.job"));
                 FlowLayoutTraitPanel.VerticalScroll.Enabled = false;
                 FlowLayoutTraitPanel.Controls.Clear();
             }
@@ -109,13 +110,13 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
                 item.UpdateLabel();
         }
 
-        private void UpdateTraits(StoryModeData current)
+        private void UpdateTraits(StoryModeProfile current)
         {
             Translator translator = GetTranslator();
             FlowLayoutTraitPanel.Controls.Clear();
             FlowLayoutTraitPanel.VerticalScroll.Enabled = false;
-            foreach (ETrait trait in current.GetTraits())
-                AddTrait(translator.GetString(StoryModeData.GetTraitName(trait)));
+            foreach (int trait in current.GetTraits())
+                AddTrait(translator.GetString(m_Data.GetTraitName(trait)));
         }
 
         private void AddTrait(string str)
@@ -137,11 +138,11 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 
         private void NewProfile_Click(object sender, EventArgs e)
         {
-            string profileName = ShowDialog(EString.ProfileName, EString.EnterProfileName).Trim();
+            string profileName = ShowDialog("storymode.text.profilename", "storymode.text.enterprofilename").Trim();
             if (profileName != "")
             {
                 m_Current = m_Profiles.Count;
-                m_Profiles.Add(new StoryModeData(profileName));
+                m_Profiles.Add(new StoryModeProfile(profileName, m_Data));
                 UpdateProfile();
                 SaveProfiles();
             }
@@ -151,7 +152,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         {
             if (m_Profiles.Count != 0)
             {
-                if (ShowConfirmDialog(EString.ConfirmDeleteProfile))
+                if (ShowConfirmDialog("storymode.text.confirmdeleteprofile"))
                 {
                     m_Profiles.RemoveAt(m_Current); if (m_Current == 0)
                     {
@@ -222,7 +223,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             }
         }
 
-        public string ShowDialog(EString text, EString title)
+        public string ShowDialog(string text, string title)
         {
             Translator translator = GetTranslator();
             Form prompt = new Form()
@@ -246,7 +247,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             return "";
         }
 
-        public int ShowNumDialog(EString text, EString title)
+        public int ShowNumDialog(string text, string title)
         {
             Translator translator = GetTranslator();
             Form prompt = new Form()
@@ -271,7 +272,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             return -1;
         }
 
-        public bool ShowConfirmDialog(EString text)
+        public bool ShowConfirmDialog(string text)
         {
             Translator translator = GetTranslator();
             Form prompt = new Form()
@@ -279,12 +280,12 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
                 Width = 300,
                 Height = 120,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
-                Text = translator.GetString(EString.AreYouSure),
+                Text = translator.GetString("other.areyousure"),
                 StartPosition = FormStartPosition.CenterParent
             };
             Label textLabel = new Label() { Left = 10, Top = 20, AutoSize = true, Text = translator.GetString(text) };
-            Button confirmation = new Button() { Text = translator.GetString(EString.Yes), Left = 180, Width = 100, Top = 50, DialogResult = DialogResult.OK };
-            Button cancel = new Button() { Text = translator.GetString(EString.No), Left = 80, Width = 100, Top = 50, DialogResult = DialogResult.Cancel };
+            Button confirmation = new Button() { Text = translator.GetString("other.yes"), Left = 180, Width = 100, Top = 50, DialogResult = DialogResult.OK };
+            Button cancel = new Button() { Text = translator.GetString("other.no"), Left = 80, Width = 100, Top = 50, DialogResult = DialogResult.Cancel };
             confirmation.Click += (sender, e) => { prompt.Close(); };
             prompt.Controls.Add(cancel);
             prompt.Controls.Add(confirmation);
@@ -298,10 +299,10 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         {
             if (m_Profiles.Count != 0)
             {
-                ETrait newTrait = m_Profiles[m_Current].NewTrait();
-                if (newTrait != ETrait.Invalid)
+                int newTrait = m_Profiles[m_Current].NewTrait();
+                if (newTrait > 0)
                 {
-                    AddTrait(GetTranslator().GetString(StoryModeData.GetTraitName(newTrait)));
+                    AddTrait(GetTranslator().GetString(m_Data.GetTraitName(newTrait)));
                     SaveProfiles();
                 }
             }
@@ -311,12 +312,12 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         {
             if (m_Profiles.Count != 0)
             {
-                int money = ShowNumDialog(EString.MoneyToAdd, EString.EnterMoneyToAdd);
+                int money = ShowNumDialog("storymode.text.moneytoadd", "storymode.text.entermoneytoadd");
                 if (money > 0)
                 {
-                    StoryModeData current = m_Profiles[m_Current];
+                    StoryModeProfile current = m_Profiles[m_Current];
                     current.AddMoney((uint)money);
-                    MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString(EString.Money), current.GetMoney());
+                    MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString("storymode.text.money"), current.GetMoney());
                     SaveProfiles();
                 }
             }
@@ -326,20 +327,20 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
         {
             if (m_Profiles.Count != 0)
             {
-                int money = ShowNumDialog(EString.MoneyToPay, EString.EnterMoneyToPay);
+                int money = ShowNumDialog("storymode.text.moneytopay", "storymode.text.entermoneytopay");
                 if (money > 0)
                 {
-                    StoryModeData current = m_Profiles[m_Current];
+                    StoryModeProfile current = m_Profiles[m_Current];
                     if (current.PayMoney((uint)money))
                     {
-                        MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString(EString.Money), current.GetMoney());
+                        MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString("storymode.text.money"), current.GetMoney());
                         SaveProfiles();
                     }
                 }
             }
         }
 
-        internal uint GetQuantity(EItemType type)
+        internal uint GetQuantity(int type)
         {
             if (m_Profiles.Count != 0)
             {
@@ -348,24 +349,26 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
             return 0;
         }
 
-        internal void BuyItem(EItemType type)
+        internal void BuyItem(int type)
         {
             if (m_Profiles.Count != 0)
             {
-                StoryModeData current = m_Profiles[m_Current];
+                StoryModeProfile current = m_Profiles[m_Current];
                 current.Buy(type, 1);
-                MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString(EString.Money), current.GetMoney());
+                MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString("storymode.text.money"), current.GetMoney());
             }
         }
 
-        internal void SellItem(EItemType type)
+        internal void SellItem(int type)
         {
             if (m_Profiles.Count != 0)
             {
-                StoryModeData current = m_Profiles[m_Current];
+                StoryModeProfile current = m_Profiles[m_Current];
                 current.Consume(type, 1);
-                MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString(EString.Money), current.GetMoney());
+                MoneyLabel.Text = string.Format("{0}: {1}$", GetTranslator().GetString("storymode.text.money"), current.GetMoney());
             }
         }
+
+        internal string GetItemName(int item) { return m_Data.GetItemName(item); }
     }
 }

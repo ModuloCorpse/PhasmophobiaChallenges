@@ -168,15 +168,18 @@
     <Compile Include="Panel\OptionPanel.Designer.cs">
       <DependentUpon>OptionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel\Speedrun\Evidence.cs" />
-    <Compile Include="Panel\Speedrun\Ghost.cs" />
+    <Compile Include="Panel\Evidences\Ghost.cs" />
     <Compile Include="Panel\StoryMode\InventoryItemUI.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Panel\StoryMode\InventoryItemUI.Designer.cs">
       <DependentUpon>InventoryItemUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panel\StoryMode\StoryModeItem.cs" />
+    <Compile Include="Panel\StoryMode\StoryModeTrait.cs" />
+    <Compile Include="Panel\StoryMode\StoryModeJob.cs" />
     <Compile Include="Panel\StoryMode\StoryModeData.cs" />
+    <Compile Include="Panel\StoryMode\StoryModeProfile.cs" />
     <Compile Include="Panel\StoryMode\StoryModePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,11 +212,11 @@
     <Compile Include="Settings\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Panel\Speedrun\SpeedrunPanel.cs">
+    <Compile Include="Panel\Evidences\EvidencesPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Panel\Speedrun\SpeedrunPanel.Designer.cs">
-      <DependentUpon>SpeedrunPanel.cs</DependentUpon>
+    <Compile Include="Panel\Evidences\EvidencesPanel.Designer.cs">
+      <DependentUpon>EvidencesPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="TextButton.cs" />
     <Compile Include="Panel\TitleScreen.cs">
@@ -260,14 +263,19 @@
     <EmbeddedResource Include="Settings\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Panel\Speedrun\SpeedrunPanel.resx">
-      <DependentUpon>SpeedrunPanel.cs</DependentUpon>
+    <EmbeddedResource Include="Panel\Evidences\EvidencesPanel.resx">
+      <DependentUpon>EvidencesPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel\TitleScreen.resx">
       <DependentUpon>TitleScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resources\StrawberryCupcakes.ttf" />
+    <None Include="Resources\ConfigurationFiles\randomstuff.json" />
+    <None Include="Resources\ConfigurationFiles\evidences.json" />
+    <None Include="Resources\ConfigurationFiles\storymode.json" />
+    <None Include="Resources\ConfigurationFiles\config.json" />
+    <None Include="Resources\Locals\english.json" />
+    <None Include="Resources\Locals\french.json" />
     <None Include="Resources\yahfie.ttf" />
   </ItemGroup>
   <ItemGroup>

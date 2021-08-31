@@ -121,6 +121,16 @@ namespace PhasmophobiaChallenge.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] config {
+            get {
+                object obj = ResourceManager.GetObject("config", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap delete_ui {
@@ -137,6 +147,36 @@ namespace PhasmophobiaChallenge.Properties {
             get {
                 object obj = ResourceManager.GetObject("edgefield_street_house", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] english {
+            get {
+                object obj = ResourceManager.GetObject("english", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] evidences {
+            get {
+                object obj = ResourceManager.GetObject("evidences", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] french {
+            get {
+                object obj = ResourceManager.GetObject("french", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -237,6 +277,16 @@ namespace PhasmophobiaChallenge.Properties {
             get {
                 object obj = ResourceManager.GetObject("prison", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] randomstuff {
+            get {
+                object obj = ResourceManager.GetObject("randomstuff", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -367,6 +417,16 @@ namespace PhasmophobiaChallenge.Properties {
             get {
                 object obj = ResourceManager.GetObject("right_ui_arrow_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] storymode {
+            get {
+                object obj = ResourceManager.GetObject("storymode", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

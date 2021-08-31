@@ -6,7 +6,7 @@ namespace PhasmophobiaChallenge.Panel
 {
     public partial class OptionPanel : APhasmophobiaCompanionPanel
     {
-        public OptionPanel(MainWindow mainWindow): base(mainWindow, EPanelType.Option, EString.Option)
+        public OptionPanel(MainWindow mainWindow): base(mainWindow, EPanelType.Option, "panel.option")
         {
             HideFromMenu();
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace PhasmophobiaChallenge.Panel
         {
             Translator translator = GetTranslator();
             Local.Text = translator.GetLocalName();
-            translator.RegisterControl(EString.Back, BackButton);
+            translator.RegisterControl("other.back", BackButton);
             PanelUIManager.RegisterImageButton(BackButton, Properties.Resources.main_menu_panel_button_background, Properties.Resources.main_menu_panel_button_background_over, Properties.Resources.main_menu_panel_button_background_over);
             PanelUIManager.RegisterImageButton(PreviousLocal, Properties.Resources.left_ui_arrow_border, Properties.Resources.left_ui_arrow_border_over, Properties.Resources.left_ui_arrow_border_over);
             PanelUIManager.RegisterImageButton(NextLocal, Properties.Resources.right_ui_arrow_border, Properties.Resources.right_ui_arrow_border_over, Properties.Resources.right_ui_arrow_border_over);

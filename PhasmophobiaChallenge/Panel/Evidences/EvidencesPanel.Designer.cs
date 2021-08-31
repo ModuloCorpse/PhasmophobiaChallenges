@@ -1,7 +1,7 @@
 ﻿
-namespace PhasmophobiaChallenge.Panel.Speedrun
+namespace PhasmophobiaChallenge.Panel.Evidences
 {
-    partial class SpeedrunPanel
+    partial class EvidencesPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace PhasmophobiaChallenge.Panel.Speedrun
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpeedrunPanel));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EvidencesPanel));
             this.BackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 

@@ -13,9 +13,9 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
     public partial class InventoryItemUI : UserControl
     {
         private readonly StoryModePanel m_Panel;
-        private readonly EItemType m_ItemType;
+        private readonly int m_ItemType;
 
-        public InventoryItemUI(StoryModePanel panel, EItemType itemType)
+        public InventoryItemUI(StoryModePanel panel, int itemType)
         {
             InitializeComponent();
             m_Panel = panel;
@@ -33,7 +33,7 @@ namespace PhasmophobiaChallenge.Panel.StoryMode
 
         public void UpdateLabel()
         {
-            ItemInventory.Text = string.Format("{0}x {1}", m_Panel.GetQuantity(m_ItemType), m_Panel.GetTranslator().GetString(StoryModeData.GetItemName(m_ItemType)));
+            ItemInventory.Text = string.Format("{0}x {1}", m_Panel.GetQuantity(m_ItemType), m_Panel.GetTranslator().GetString(m_Panel.GetItemName(m_ItemType)));
             SizeF stringSize = TextRenderer.MeasureText(ItemInventory.Text, ItemInventory.Font);
             float newFontSize = ItemInventory.Font.Size * Math.Min(ItemInventory.Size.Height / stringSize.Height, (ItemInventory.Size.Width - 10) / stringSize.Width);
             if (newFontSize < ItemInventory.Font.Size)

@@ -1,0 +1,267 @@
+﻿{
+  "jobs": [
+    {
+      "id": 0,
+      "name": "storymode.jobs.archaeologist"
+    },
+    {
+      "id": 1,
+      "name": "storymode.jobs.actor"
+    },
+    {
+      "id": 2,
+      "name": "storymode.jobs.unemployed"
+    },
+    {
+      "id": 3,
+      "name": "storymode.jobs.babysitter"
+    },
+    {
+      "id": 4,
+      "name": "storymode.jobs.speedrunner"
+    },
+    {
+      "id": 5,
+      "name": "storymode.jobs.podcaster"
+    },
+    {
+      "id": 6,
+      "name": "storymode.jobs.cameraman"
+    },
+    {
+      "id": 7,
+      "name": "storymode.jobs.doctor"
+    }
+  ],
+  "traits": [
+    {
+      "id": 0,
+      "name": "storymode.traits.sensitive"
+    },
+    {
+      "id": 1,
+      "name": "storymode.traits.technophobe"
+    },
+    {
+      "id": 2,
+      "name": "storymode.traits.dwarf"
+    },
+    {
+      "id": 3,
+      "name": "storymode.traits.bold"
+    },
+    {
+      "id": 4,
+      "name": "storymode.traits.chilly"
+    },
+    {
+      "id": 5,
+      "name": "storymode.traits.butterfingers"
+    },
+    {
+      "id": 6,
+      "name": "storymode.traits.courteous"
+    },
+    {
+      "id": 7,
+      "name": "storymode.traits.coward"
+    },
+    {
+      "id": 8,
+      "name": "storymode.traits.deaf",
+      "exclude": [ 9 ]
+    },
+    {
+      "id": 9,
+      "name": "storymode.traits.confuse",
+      "exclude": [ 8 ]
+    },
+    {
+      "id": 10,
+      "name": "storymode.traits.alzheimer"
+    },
+    {
+      "id": 11,
+      "name": "storymode.traits.germophobe"
+    },
+    {
+      "id": 12,
+      "name": "storymode.traits.cardiac"
+    },
+    {
+      "id": 13,
+      "name": "storymode.traits.asthmatic"
+    },
+    {
+      "id": 14,
+      "name": "storymode.traits.nycotophobic",
+      "exclude": [ 19 ]
+    },
+    {
+      "id": 15,
+      "name": "storymode.traits.giant"
+    },
+    {
+      "id": 16,
+      "name": "storymode.traits.paranoide"
+    },
+    {
+      "id": 17,
+      "name": "storymode.traits.attentive"
+    },
+    {
+      "id": 18,
+      "name": "storymode.traits.conspiratorial"
+    },
+    {
+      "id": 19,
+      "name": "storymode.traits.vampire",
+      "exclude": [ 14 ]
+    },
+    {
+      "id": 20,
+      "name": "storymode.traits.teenage"
+    },
+    {
+      "id": 21,
+      "name": "storymode.traits.hurry"
+    },
+    {
+      "id": 22,
+      "name": "storymode.traits.shy"
+    },
+    {
+      "id": 23,
+      "name": "storymode.traits.smallpocket"
+    },
+    {
+      "id": 24,
+      "name": "storymode.traits.fussy"
+    },
+    {
+      "id": 25,
+      "name": "storymode.traits.inattentive"
+    },
+    {
+      "id": 26,
+      "name": "storymode.traits.weakbladder"
+    }
+  ],
+  "items": [
+    {
+      "id": 0,
+      "name": "items.emf",
+      "price": 45
+    },
+    {
+      "id": 1,
+      "name": "items.flashlight",
+      "price": 30
+    },
+    {
+      "id": 2,
+      "name": "items.strongflashlight",
+      "price": 50
+    },
+    {
+      "id": 3,
+      "name": "items.photocamera",
+      "price": 40
+    },
+    {
+      "id": 4,
+      "name": "items.lighter",
+      "price": 10
+    },
+    {
+      "id": 5,
+      "name": "items.candle",
+      "price": 15
+    },
+    {
+      "id": 6,
+      "name": "items.uv",
+      "price": 35
+    },
+    {
+      "id": 7,
+      "name": "items.crucifix",
+      "price": 30
+    },
+    {
+      "id": 8,
+      "name": "items.videocamera",
+      "price": 50
+    },
+    {
+      "id": 9,
+      "name": "items.spirit",
+      "price": 50
+    },
+    {
+      "id": 10,
+      "name": "items.salt",
+      "price": 15
+    },
+    {
+      "id": 11,
+      "name": "items.smudge",
+      "price": 15
+    },
+    {
+      "id": 12,
+      "name": "items.tripod",
+      "price": 25
+    },
+    {
+      "id": 13,
+      "name": "items.motion",
+      "price": 100
+    },
+    {
+      "id": 14,
+      "name": "items.sound",
+      "price": 80
+    },
+    {
+      "id": 15,
+      "name": "items.pills",
+      "price": 45
+    },
+    {
+      "id": 16,
+      "name": "items.thermometer",
+      "price": 30
+    },
+    {
+      "id": 17,
+      "name": "items.book",
+      "price": 40
+    },
+    {
+      "id": 18,
+      "name": "items.infrared",
+      "price": 65
+    },
+    {
+      "id": 19,
+      "name": "items.parabolicmicrophone",
+      "price": 50
+    },
+    {
+      "id": 20,
+      "name": "items.glowstick",
+      "price": 20
+    },
+    {
+      "id": 21,
+      "name": "items.gopro",
+      "price": 60
+    },
+    {
+      "id": 22,
+      "name": "items.dots",
+      "price": 45
+    }
+  ]
+}
