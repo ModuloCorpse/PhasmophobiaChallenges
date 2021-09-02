@@ -2,31 +2,38 @@
   "evidences": [
     {
       "id": 0,
-      "name": "evidences.freezing"
+      "name": "evidences.freezing",
+      "image": "evidence_freezing"
     },
     {
       "id": 1,
-      "name": "evidences.writing"
+      "name": "evidences.writing",
+      "image": "evidence_book"
     },
     {
       "id": 2,
-      "name": "evidences.orb"
+      "name": "evidences.orb",
+      "image": "evidence_orb"
     },
     {
       "id": 3,
-      "name": "evidences.fingerprints"
+      "name": "evidences.fingerprints",
+      "image": "evidence_fingerprints"
     },
     {
       "id": 4,
-      "name": "evidences.spirit"
+      "name": "evidences.spirit",
+      "image": "evidence_spirit"
     },
     {
       "id": 5,
-      "name": "evidences.emf"
+      "name": "evidences.emf",
+      "image": "evidence_emf"
     },
     {
       "id": 6,
-      "name": "evidences.dots"
+      "name": "evidences.dots",
+      "image": "evidence_dots"
     }
   ],
   "ghosts": [

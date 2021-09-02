@@ -64,7 +64,8 @@ namespace PhasmophobiaChallenge
         }
 
         public virtual void OnOpen() {}
-        public virtual void OnClose() { }
+        public virtual void OnClose() {}
         public virtual void OnInitialize() {}
+        public virtual Control GetOverlayControl() { return null; }
     }
 }

@@ -138,6 +138,12 @@
     <Compile Include="DataFragment.cs" />
     <Compile Include="IJsonable.cs" />
     <Compile Include="Json.cs" />
+    <Compile Include="OverlayWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OverlayWindow.Designer.cs">
+      <DependentUpon>OverlayWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panel\Discord\Challenge Panel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,6 +168,12 @@
     </Compile>
     <Compile Include="Enumerations.cs" />
     <Compile Include="PanelUIManager.cs" />
+    <Compile Include="Panel\Evidences\EvidenceOverlay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panel\Evidences\EvidenceOverlay.Designer.cs">
+      <DependentUpon>EvidenceOverlay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panel\OptionPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +238,9 @@
       <DependentUpon>TitleScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Translator.cs" />
+    <EmbeddedResource Include="OverlayWindow.resx">
+      <DependentUpon>OverlayWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panel\Discord\Challenge Panel.resx">
       <DependentUpon>Challenge Panel.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panel\DummyPanel.resx">
       <DependentUpon>DummyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panel\Evidences\EvidenceOverlay.resx">
+      <DependentUpon>EvidenceOverlay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panel\OptionPanel.resx">
       <DependentUpon>OptionPanel.cs</DependentUpon>
@@ -365,6 +383,13 @@
     <None Include="Resources\delete_ui.png" />
     <None Include="Resources\add_ui_small.png" />
     <None Include="Resources\remove_ui_small.png" />
+    <None Include="Resources\evidence_book.png" />
+    <None Include="Resources\evidence_dots.png" />
+    <None Include="Resources\evidence_emf.png" />
+    <None Include="Resources\evidence_fingerprints.png" />
+    <None Include="Resources\evidence_freezing.png" />
+    <None Include="Resources\evidence_orb.png" />
+    <None Include="Resources\evidence_spirit.png" />
     <Content Include="Resources\tv_remote_icon.png" />
     <Content Include="Resources\waiting_form.gif" />
     <Content Include="vs-chromium-project.txt" />

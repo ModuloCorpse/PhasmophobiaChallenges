@@ -74,7 +74,7 @@ namespace PhasmophobiaChallenge
                 m_Data = jValue as JsonObject;
         }
 
-        public Json(byte[] byteArray): this(Encoding.UTF8.GetString(byteArray).Substring(1)) {}
+        public Json(byte[] byteArray): this(Encoding.UTF8.GetString(byteArray).Substring(1)) {} //Substring(1) is here to remove the ? added by UTF8 encoding
 
         public override bool Equals(object obj)
         {

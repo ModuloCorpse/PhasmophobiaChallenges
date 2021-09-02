@@ -11,11 +11,16 @@ namespace PhasmophobiaChallenge.Panel.Evidences
         private static readonly Color UNSELECTED_EVIDENCE = Color.White;
         private static readonly Color REMOVED_EVIDENCE = Color.LightSalmon;
         private static readonly Color IMPOSSIBLE_EVIDENCE = Color.DarkGray;
+
         private List<KeyValuePair<string, Control>> m_RegisteredControls = new List<KeyValuePair<string, Control>>();
         private readonly List<Ghost> m_Ghosts = new List<Ghost>();
+        private readonly HashSet<Ghost> m_RemovedGhost = new HashSet<Ghost>();
+        private readonly Dictionary<CheckBox, Ghost> m_CheckBoxToGhost = new Dictionary<CheckBox, Ghost>();
+        private Ghost m_SelectedGhost = null;
+        private readonly EvidenceOverlay m_Overlay = new EvidenceOverlay();
+        private CheckBox m_CheckBoxDownOn = null;
         private readonly HashSet<uint> m_SelectedEvidences = new HashSet<uint>();
         private readonly HashSet<uint> m_RemovedEvidences = new HashSet<uint>();
-        private CheckBox m_CheckBoxDownOn = null;
         private readonly Dictionary<CheckBox, uint> m_CheckBoxToEvidence = new Dictionary<CheckBox, uint>();
         private readonly Dictionary<uint, CheckBox> m_EvidenceToCheckBox = new Dictionary<uint, CheckBox>();
         private uint m_NbEvidence = 0;
@@ -31,8 +36,9 @@ namespace PhasmophobiaChallenge.Panel.Evidences
             {
                 uint? id = evidenceJson.Get<uint>("id");
                 string name = evidenceJson.Get<string>("name");
-                if (id != null && name != null)
-                    RegisterEvidenceCheckBox((uint)id, name);
+                string image = evidenceJson.Get<string>("image");
+                if (id != null && name != null && image != null)
+                    RegisterEvidenceCheckBox((uint)id, name, image);
             }
 
             List<Json> ghosts = datas.GetArray<Json>("ghosts");
@@ -63,23 +69,33 @@ namespace PhasmophobiaChallenge.Panel.Evidences
             int labelYPosition = 10;
             foreach (Ghost ghost in m_Ghosts)
             {
-                Label ghostLabel = new Label()
+                CheckBox ghostCheckBox = new CheckBox
                 {
-                    Location = new Point(25, labelYPosition),
-                    Font = new Font(GetDefaultFontFamily(), fontSize),
-                    AutoSize = false,
-                    Size = new Size(labelWidth, labelHeight),
+                    Appearance = Appearance.Button,
                     BackColor = Color.Transparent,
-                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font(GetDefaultFontFamily(), fontSize - 3),
+                    ForeColor = UNSELECTED_EVIDENCE,
+                    UseVisualStyleBackColor = false,
+                    AutoSize = false,
+                    Location = new Point(25, labelYPosition),
+                    Size = new Size(labelWidth, labelHeight)
                 };
+                ghostCheckBox.FlatAppearance.BorderSize = 0;
+                ghostCheckBox.FlatAppearance.CheckedBackColor = Color.Transparent;
+                ghostCheckBox.FlatAppearance.MouseDownBackColor = Color.Gray;
+                ghostCheckBox.FlatAppearance.MouseOverBackColor = Color.Gray;
+                m_CheckBoxToGhost[ghostCheckBox] = ghost;
+                ghostCheckBox.MouseDown += new MouseEventHandler(CheckBoxMouseDown);
+                ghostCheckBox.MouseUp += new MouseEventHandler(GhostCheckBoxMouseUp);
                 labelYPosition += labelHeight;
-                translator.RegisterControl(ghost.GetName(), ghostLabel);
-                Controls.Add(ghostLabel);
-                ghost.SetLabel(ghostLabel);
+                translator.RegisterControl(ghost.GetName(), ghostCheckBox);
+                Controls.Add(ghostCheckBox);
+                ghost.SetCheckBox(ghostCheckBox);
             }
         }
 
-        private void RegisterEvidenceCheckBox(uint evidence, string name)
+        private void RegisterEvidenceCheckBox(uint evidence, string name, string image)
         {
             CheckBox checkBox = new CheckBox
             {
@@ -87,7 +103,7 @@ namespace PhasmophobiaChallenge.Panel.Evidences
                 BackColor = Color.Transparent,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font(GetDefaultFontFamily(), 24),
-                ForeColor = Color.White,
+                ForeColor = UNSELECTED_EVIDENCE,
                 UseVisualStyleBackColor = false,
                 AutoSize = true
             };
@@ -98,8 +114,9 @@ namespace PhasmophobiaChallenge.Panel.Evidences
             checkBox.FlatAppearance.MouseOverBackColor = Color.Gray;
             m_CheckBoxToEvidence[checkBox] = evidence;
             m_EvidenceToCheckBox[evidence] = checkBox;
+            m_Overlay.RegisterEvidenceImage(evidence, image);
             checkBox.MouseDown += new MouseEventHandler(CheckBoxMouseDown);
-            checkBox.MouseUp += new MouseEventHandler(CheckBoxMouseUp);
+            checkBox.MouseUp += new MouseEventHandler(EvidenceCheckBoxMouseUp);
             Controls.Add(checkBox);
             ++m_NbEvidence;
         }
@@ -134,11 +151,22 @@ namespace PhasmophobiaChallenge.Panel.Evidences
 
         public override void OnOpen()
         {
+            m_Overlay.OnOpen();
             Translator translator = GetTranslator();
             foreach (KeyValuePair<string, Control> pair in m_RegisteredControls)
                 translator.RegisterControl(pair.Key, pair.Value);
             PanelUIManager.RegisterImageButton(BackButton, Properties.Resources.red_arrow, Properties.Resources.red_arrow_over, Properties.Resources.red_arrow_clicked);
             Reset();
+        }
+
+        public override void OnClose()
+        {
+            m_Overlay.OnClose();
+        }
+
+        public override Control GetOverlayControl()
+        {
+            return m_Overlay;
         }
 
         private void Reset()
@@ -151,25 +179,53 @@ namespace PhasmophobiaChallenge.Panel.Evidences
         private void UpdateEvidences()
         {
             HashSet<uint> possibleEvidence = new HashSet<uint>();
-            List<Ghost> possibleGhosts = new List<Ghost>();
+            List<Ghost> possibleGhost = new List<Ghost>();
 
-            foreach (Ghost ghost in m_Ghosts)
+            if (m_SelectedGhost != null)
             {
-                Label ghostLabel = ghost.GetLabel();
-                if (ghost.Match(m_SelectedEvidences, m_RemovedEvidences))
+                foreach (Ghost ghost in m_Ghosts)
                 {
-                    possibleGhosts.Add(ghost);
-                    foreach (uint ghostEvidence in ghost.GetEvidences())
-                        possibleEvidence.Add(ghostEvidence);
-                    ghostLabel.Enabled = true;
-                    ghostLabel.Visible = true;
+                    CheckBox ghostCheckBox = ghost.GetCheckBox();
+                    ghostCheckBox.Enabled = false;
+                    ghostCheckBox.ForeColor = IMPOSSIBLE_EVIDENCE;
                 }
-                else
+
+                foreach (uint ghostEvidence in m_SelectedGhost.GetEvidences())
+                    possibleEvidence.Add(ghostEvidence);
+                CheckBox selectedGhostCheckBox = m_SelectedGhost.GetCheckBox();
+                selectedGhostCheckBox.Enabled = true;
+                selectedGhostCheckBox.ForeColor = SELECTED_EVIDENCE;
+                possibleGhost.Add(m_SelectedGhost);
+            }
+            else
+            {
+                foreach (Ghost ghost in m_Ghosts)
                 {
-                    ghostLabel.Enabled = false;
-                    ghostLabel.Visible = false;
+                    CheckBox ghostCheckBox = ghost.GetCheckBox();
+                    if (m_RemovedGhost.Contains(ghost))
+                    {
+                        ghostCheckBox.ForeColor = REMOVED_EVIDENCE;
+                    }
+                    else
+                    {
+                        if (ghost.Match(m_SelectedEvidences, m_RemovedEvidences))
+                        {
+                            foreach (uint ghostEvidence in ghost.GetEvidences())
+                                possibleEvidence.Add(ghostEvidence);
+                            ghostCheckBox.Enabled = true;
+                            ghostCheckBox.ForeColor = UNSELECTED_EVIDENCE;
+                            possibleGhost.Add(ghost);
+                        }
+                        else
+                        {
+                            ghostCheckBox.Enabled = false;
+                            ghostCheckBox.ForeColor = IMPOSSIBLE_EVIDENCE;
+                        }
+                    }
                 }
             }
+
+            m_Overlay.Update(m_SelectedEvidences, possibleGhost);
 
             for (uint evidence = 0; evidence != m_NbEvidence; ++evidence)
             {
@@ -199,7 +255,7 @@ namespace PhasmophobiaChallenge.Panel.Evidences
             m_CheckBoxDownOn = sender as CheckBox;
         }
 
-        private void CheckBoxMouseUp(object sender, MouseEventArgs e)
+        private void EvidenceCheckBoxMouseUp(object sender, MouseEventArgs e)
         {
             CheckBox checkBox = sender as CheckBox;
             if (checkBox == m_CheckBoxDownOn)
@@ -216,6 +272,8 @@ namespace PhasmophobiaChallenge.Panel.Evidences
                                 else
                                     m_SelectedEvidences.Remove(evidence);
                             }
+                            else
+                                checkBox.Checked = false;
                             break;
                         }
                     case MouseButtons.Right:
@@ -226,6 +284,44 @@ namespace PhasmophobiaChallenge.Panel.Evidences
                                     m_RemovedEvidences.Add(evidence);
                                 else
                                     m_RemovedEvidences.Remove(evidence);
+                            }
+                            break;
+                        }
+                }
+                UpdateEvidences();
+            }
+            m_CheckBoxDownOn = null;
+        }
+
+        private void GhostCheckBoxMouseUp(object sender, MouseEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox == m_CheckBoxDownOn)
+            {
+                Ghost ghost = m_CheckBoxToGhost[checkBox];
+                switch (e.Button)
+                {
+                    case MouseButtons.Left:
+                        {
+                            if (!m_RemovedGhost.Contains(ghost))
+                            {
+                                if (checkBox.Checked)
+                                    m_SelectedGhost = ghost;
+                                else
+                                    m_SelectedGhost = null;
+                            }
+                            else
+                                checkBox.Checked = false;
+                            break;
+                        }
+                    case MouseButtons.Right:
+                        {
+                            if (!checkBox.Checked)
+                            {
+                                if (!m_RemovedGhost.Contains(ghost))
+                                    m_RemovedGhost.Add(ghost);
+                                else
+                                    m_RemovedGhost.Remove(ghost);
                             }
                             break;
                         }

@@ -14,6 +14,7 @@ namespace PhasmophobiaChallenge
 {
     public partial class MainWindow : Form
     {
+        private readonly OverlayWindow m_Overlay = new OverlayWindow();
         private readonly int m_DefaultFont;
         private readonly DataFile m_Config;
         private readonly Translator m_Translator;
@@ -32,6 +33,7 @@ namespace PhasmophobiaChallenge
             if (m_Panels.TryGetValue(EPanelType.TitleScreen, out APhasmophobiaCompanionPanel panel))
                 SetCurrentPanel(panel, EPanelType.TitleScreen);
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
+            m_Overlay.Visible = true;
         }
 
         private int LoadFont(byte[] fontData)
@@ -101,7 +103,10 @@ namespace PhasmophobiaChallenge
             if (m_CurrentPanelType == page || page == EPanelType.Count || page == EPanelType.Invalid)
                 return;
             else if (m_Panels.TryGetValue(page, out APhasmophobiaCompanionPanel panel))
+            {
                 SetCurrentPanel(panel, page);
+                m_Overlay.SetPanel(panel.GetOverlayControl());
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace PhasmophobiaChallenge.Panel.Evidences
     internal class Ghost
     {
         private HashSet<uint> m_Evidences = new HashSet<uint>();
-        private Label m_Label;
+        private CheckBox m_CheckBox;
         private string m_Name;
 
         internal Ghost(string name)
@@ -15,8 +15,8 @@ namespace PhasmophobiaChallenge.Panel.Evidences
         }
 
         internal HashSet<uint> GetEvidences() { return m_Evidences; }
-        internal Label GetLabel() { return m_Label; }
-        internal void SetLabel(Label label) { m_Label = label; }
+        internal CheckBox GetCheckBox() { return m_CheckBox; }
+        internal void SetCheckBox(CheckBox label) { m_CheckBox = label; }
         internal string GetName() { return m_Name; }
 
         internal void AddEvidence(uint evidence) { m_Evidences.Add(evidence); }
