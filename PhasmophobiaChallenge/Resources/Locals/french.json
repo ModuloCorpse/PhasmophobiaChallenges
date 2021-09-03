@@ -18,7 +18,8 @@
     "yes": "Oui",
     "no": "Non",
     "version": "Version",
-    "exit": "Quitter"
+    "exit": "Quitter",
+    "overlay": "Overlay"
   },
   "ghost": {
     "spirit": "Esprit",

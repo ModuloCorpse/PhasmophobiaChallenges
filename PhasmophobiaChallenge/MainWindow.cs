@@ -1,5 +1,4 @@
 ﻿using PhasmophobiaChallenge.Panel;
-//using PhasmophobiaChallenge.Panel.Discord;
 using PhasmophobiaChallenge.Panel.RandomStuff;
 using PhasmophobiaChallenge.Panel.Evidences;
 using PhasmophobiaChallenge.Panel.StoryMode;
@@ -14,7 +13,7 @@ namespace PhasmophobiaChallenge
 {
     public partial class MainWindow : Form
     {
-        private readonly OverlayWindow m_Overlay = new OverlayWindow();
+        private readonly OverlayWindow m_Overlay;
         private readonly int m_DefaultFont;
         private readonly DataFile m_Config;
         private readonly Translator m_Translator;
@@ -28,6 +27,7 @@ namespace PhasmophobiaChallenge
             m_DefaultFont = LoadFont(Properties.Resources.Yahfie);
             m_Config = new DataFile();
             m_Translator = new Translator(m_Config.GetFragment(EPanelType.Option));
+            m_Overlay = new OverlayWindow(m_Translator);
             InitializeComponent();
             InitializePanels();
             if (m_Panels.TryGetValue(EPanelType.TitleScreen, out APhasmophobiaCompanionPanel panel))
@@ -56,7 +56,6 @@ namespace PhasmophobiaChallenge
             RegisterPanel(new StoryModePanel(this));
             RegisterPanel(new RandomStuffPanel(this));
             RegisterPanel(new EvidencesPanel(this));
-            //RegisterPanel(new DiscordPanel(this));
             //RegisterPanel(new DummyPanel(this, EPanelType.Dummy1, "panel.dummy"));
             //RegisterPanel(new DummyPanel(this, EPanelType.Dummy2, "panel.dummy"));
             //RegisterPanel(new DummyPanel(this, EPanelType.Dummy3, "panel.dummy"));

@@ -13,13 +13,14 @@ namespace PhasmophobiaChallenge
         [DllImport("user32.dll")]
         private static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
-        public OverlayWindow()
+        public OverlayWindow(Translator translator)
         {
             InitializeComponent();
             int initialStyle = GetWindowLong(Handle, -20);
             SetWindowLong(Handle, -20, initialStyle | 0x80000 | 0x20);
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             Location = new Point(0, 0);
+            Text = translator.GetString("other.apptitle") + " [" + translator.GetString("other.overlay") + "]";
         }
 
         internal void SetPanel(Control panel)
